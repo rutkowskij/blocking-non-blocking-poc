@@ -45,14 +45,14 @@ public class StreamIT {
         mat = ActorMaterializer.create(system);
     }
 
-//    @Test
-//    public void helloWorld() throws Exception {
-//        String answer = await(helloService.hello("foo").invoke());
-//        assertEquals("Hello, foo!", answer);
-//        await(helloService.useGreeting("bar").invoke(new GreetingMessage("Hi")));
-//        String answer2 = await(helloService.hello("bar").invoke());
-//        assertEquals("Hi, bar!", answer2);
-//    }
+    @Test
+    public void helloWorld() throws Exception {
+        String answer = await(helloService.hello("foo").invoke());
+        assertEquals("Hello, foo!", answer);
+        await(helloService.useGreeting("bar").invoke(new GreetingMessage("Hi")));
+        String answer2 = await(helloService.hello("bar").invoke());
+        assertEquals("Hi, bar!", answer2);
+    }
 
     @Test
     public void helloStream() throws Exception {
