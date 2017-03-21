@@ -15,6 +15,7 @@ import javax.inject.Inject;
 import io.thingcare.hello.api.GreetingMessage;
 import io.thingcare.hello.api.HelloService;
 import io.thingcare.hello.impl.HelloCommand.*;
+import io.thingcare.hello.impl.routing.RoutingClient;
 
 /**
  * Implementation of the HelloService.
@@ -22,20 +23,19 @@ import io.thingcare.hello.impl.HelloCommand.*;
 public class HelloServiceImpl implements HelloService {
 
   private final PersistentEntityRegistry persistentEntityRegistry;
+  private final RoutingClient routingClient;
 
   @Inject
-  public HelloServiceImpl(PersistentEntityRegistry persistentEntityRegistry) {
+  public HelloServiceImpl(PersistentEntityRegistry persistentEntityRegistry, RoutingClient routingClient) {
     this.persistentEntityRegistry = persistentEntityRegistry;
+    this.routingClient = routingClient;
     persistentEntityRegistry.register(HelloEntity.class);
   }
 
   @Override
   public ServiceCall<NotUsed, String> hello(String id) {
     return request -> {
-      // Look up the hello world entity for the given ID.
-      PersistentEntityRef<HelloCommand> ref = persistentEntityRegistry.refFor(HelloEntity.class, id);
-      // Ask the entity the Hello command.
-      return ref.ask(new Hello(id, Optional.empty()));
+     return routingClient.routing().invoke();
     };
   }
 
