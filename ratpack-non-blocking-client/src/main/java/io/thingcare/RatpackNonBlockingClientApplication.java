@@ -35,20 +35,16 @@ public class RatpackNonBlockingClientApplication {
     public Action<Chain> client() {
         return chain -> chain
                 .get("client", ctx -> {
-
-                        HttpClient client = ctx.get(HttpClient.class);
-//                        client.get(new URI("https://mighty-river-19883.herokuapp.com/routing?sleep=100"))
-                        client.get(new URI("http://localhost:9000/routing?sleep=200"))
-                                .map(ReceivedResponse::getBody)
-                                .map(body -> "Received from routing: " + body.getText())
-                                .then(ctx::render);
-                    });
+                    HttpClient client = ctx.get(HttpClient.class);
+                    client.get(new URI("http://localhost:9000/routing"))
+                            .map(ReceivedResponse::getBody)
+                            .map(body -> "Received from routing: " + body.getText())
+                            .then(ctx::render);
+                });
     }
 
     @Bean
     public Service service() {
         return () -> "Ratpack!";
     }
-
-
 }

@@ -17,10 +17,8 @@ public class BlockingServiceController {
     @RequestMapping(value = "/{resource}", method = RequestMethod.GET, produces = MediaType.TEXT_PLAIN_VALUE)
     public ResponseEntity<String> getData(@PathVariable String resource, @RequestParam(required = false, defaultValue = "200") int sleep) throws InterruptedException {
         UUID uuid= UUID.randomUUID();
-//        log.info("blocking service called " + uuid);
         Thread.sleep(sleep);
         String result = format("%s result: %s", resource, uuid);
-//        log.info("result :" + result);
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 }

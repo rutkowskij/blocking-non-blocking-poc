@@ -20,8 +20,7 @@ public class BlockingServiceClientController {
 
     @GetMapping("/client")
     public ResponseEntity<String> getData() throws InterruptedException {
-//        final String result = restTemplate.getForObject("https://mighty-river-19883.herokuapp.com/routing?sleep=200", String.class);
-        final String result = restTemplate.getForObject("http://localhost:8000/routing?sleep=200", String.class);
+        final String result = restTemplate.getForObject("http://localhost:9000/routing", String.class);
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 }

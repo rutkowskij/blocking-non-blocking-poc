@@ -11,6 +11,8 @@
         <module>blocking-service</module>
         <module>blocking-client</module>
         <module>gatling-load-tests</module>
+        <module>non-blocking-client</module>
+        <module>non-blocking-async-client</module>
         <module>lagom-non-blocking-client</module>
   </modules>
 
