@@ -19,6 +19,6 @@ public class NonBlockingClientController {
                 .uri("/routing")
                 .accept(TEXT_PLAIN)
                 .exchange().timeout(Duration.ofSeconds(30))
-                .then(response -> response.bodyToMono(String.class));
+                .flatMap(clientResponse -> clientResponse.bodyToMono(String.class));
     }
 }
