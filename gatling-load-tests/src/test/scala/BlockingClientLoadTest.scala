@@ -26,13 +26,11 @@ class BasicSimulation extends Simulation {
     constantUsersPerSec(10) during 10.seconds,
     constantUsersPerSec(20) during 10.seconds,
     constantUsersPerSec(50) during 10.seconds,
-    constantUsersPerSec(100) during 10.seconds
-    ,
+    constantUsersPerSec(100) during 10.seconds,
     constantUsersPerSec(200) during 10.seconds,
     constantUsersPerSec(500) during 10.seconds,
-    constantUsersPerSec(1000) during 10.seconds
-    //        ,
-    //    constantUsersPerSec(2000) during 10.seconds
+    constantUsersPerSec(1000) during 10.seconds,
+    constantUsersPerSec(2000) during 10.seconds
   ).protocols(httpConf))
 
 }
